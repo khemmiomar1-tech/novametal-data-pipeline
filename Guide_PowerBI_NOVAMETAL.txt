@@ -1,0 +1,97 @@
+============================================================
+CONSTRUIRE LE TABLEAU DE BORD NOVAMETAL DANS POWER BI
+Guide pas à pas — environ 20 à 30 minutes la première fois
+Fichiers fournis : NOVAMETAL_PowerBI_Data.xlsx (les données,
+déjà modélisées en étoile) et Mesures_DAX_PowerBI.txt
+Le résultat visé : la page « NOVAMETAL — Tableau de bord
+Data » que tu as déjà (mêmes chiffres, mêmes vues).
+============================================================
+
+ÉTAPE 0 — INSTALLER (une seule fois)
+------------------------------------------------------------
+Power BI Desktop est gratuit :
+Microsoft Store → chercher « Power BI Desktop » →
+Installer. (Ou powerbi.microsoft.com → Télécharger.)
+C'est un logiciel Windows : ton PC suffit.
+
+ÉTAPE 1 — CHARGER LES DONNÉES (2 minutes)
+------------------------------------------------------------
+1. Ouvre Power BI Desktop.
+2. « Obtenir les données » → Excel → choisis
+   NOVAMETAL_PowerBI_Data.xlsx.
+3. Coche les 6 tables : Dim_Produit, Fait_Mouvements,
+   Fait_Ventes, Gold_Stock, Gold_Marge, Gold_Synthese.
+4. Clique « Charger ». Les données sont dans Power BI.
+
+ÉTAPE 2 — LES RELATIONS (le modèle en étoile, 2 minutes)
+------------------------------------------------------------
+1. À gauche, clique l'icône « Modèle » (les carrés reliés).
+2. Relie Fait_Mouvements[ref_produit] à
+   Dim_Produit[ref_produit] : glisse un champ sur l'autre.
+3. Pareil pour Fait_Ventes[ref_produit] →
+   Dim_Produit[ref_produit].
+C'est tout : la dimension Produit pilote les deux faits.
+
+ÉTAPE 3 — LES MESURES DAX (5 minutes)
+------------------------------------------------------------
+Ouvre Mesures_DAX_PowerBI.txt. Pour chaque mesure :
+1. Clic droit sur Fait_Ventes → « Nouvelle mesure ».
+2. Colle la formule, Entrée.
+Crée : Ventes totales, Marge totale, Marge %,
+Valeur du stock, Nb ruptures, Nb produits au seuil,
+Stock actuel produit.
+
+ÉTAPE 4 — PAGE 1 « PILOTAGE » (la vue du dirigeant)
+------------------------------------------------------------
+1. En bas, renomme la page : « Pilotage ».
+2. Visuel « Carte » × 4, en haut :
+   - Ventes totales → 24 500 DH
+   - Marge totale → 7 500 DH
+   - Marge % → 30,6 %
+   - Valeur du stock → 4 150 DH
+3. Visuel « Graphique à barres » : Gold_Synthese
+   (indicateur en axe, montant_dh en valeurs) —
+   le flux complet : achats, production, ventes, marge.
+4. Visuel « Table » : Gold_Marge — la marge par produit
+   (prix, coût de revient, marge unitaire et totale).
+
+ÉTAPE 5 — PAGE 2 « STOCK » (le tableau propre)
+------------------------------------------------------------
+1. Nouvelle page, renomme : « Stock ».
+2. Visuel « Segment » (slicer) : Gold_Stock[statut] —
+   pour filtrer Rupture / Limite / OK en un clic.
+3. Visuel « Table » : Gold_Stock en entier
+   (produit, quantité, valeur_stock_dh, seuil_min,
+   statut).
+4. Mise en forme conditionnelle : sélectionne la table →
+   Format → « Mise en forme conditionnelle » sur la
+   colonne statut : RUPTURE = fond rouge, LIMITE = fond
+   orange, OK = fond vert.
+5. Visuel « Graphique à barres » : Gold_Stock
+   (nom_produit en axe, quantite en valeurs) — le stock
+   actuel par produit, la peinture à zéro se voit
+   d'un coup d'œil.
+6. Visuel « Table » : Fait_Mouvements triée par
+   horodatage — la chronologie des 10 mouvements avec
+   leurs documents (WH/IN, WH/MO, WH/OUT).
+
+ÉTAPE 6 — ENREGISTRER
+------------------------------------------------------------
+Fichier → Enregistrer sous → NOVAMETAL_PowerBI.pbix.
+C'est TON fichier Power BI, construit par toi, sur les
+données du POC.
+
+------------------------------------------------------------
+LA PHRASE POUR MONSIEUR RAID
+« Les tableaux de bord d'Odoo montrent les totaux. Moi,
+je sors les données d'Odoo, je les modélise en étoile,
+et je livre le pilotage dans Power BI : la marge réelle
+par produit, et les alertes de stock avant la rupture.
+Je l'ai fait sur ce POC — le fichier est là. »
+
+POINT D'HONNÊTETÉ
+Les données du fichier Excel sont l'export des
+enregistrements réels de la base démo. En entreprise,
+Power BI se connecte directement à la base (ou à
+l'entrepôt Databricks) et se rafraîchit tout seul.
+============================================================

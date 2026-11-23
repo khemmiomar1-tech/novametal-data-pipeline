@@ -1,0 +1,33 @@
+============================================================
+MESURES DAX — à copier-coller dans Power BI Desktop
+(Clic droit sur une table → « Nouvelle mesure » → coller)
+============================================================
+
+Ventes totales =
+SUM ( Fait_Ventes[montant_dh] )
+
+Marge totale =
+SUM ( Fait_Ventes[marge_totale_dh] )
+
+Marge % =
+DIVIDE ( [Marge totale], [Ventes totales] )
+
+Cout de revient rack =
+MAX ( Dim_Produit[cout_unitaire_dh] )
+(à filtrer sur le produit RACK dans la carte visuelle)
+
+Valeur du stock =
+SUM ( Gold_Stock[valeur_stock_dh] )
+
+Stock actuel produit =
+SUM ( Fait_Mouvements[quantite] )
+
+Nb ruptures =
+COUNTROWS ( FILTER ( Gold_Stock, Gold_Stock[quantite] = 0 && Gold_Stock[ref_produit] <> "RACK" ) )
+
+Nb produits au seuil =
+COUNTROWS ( FILTER ( Gold_Stock, Gold_Stock[statut] = "LIMITE - surveiller" ) )
+
+Total achats =
+SUMX ( FILTER ( Gold_Synthese, Gold_Synthese[indicateur] = "Achats P00001 (matières premières)" ), Gold_Synthese[montant_dh] )
+============================================================
