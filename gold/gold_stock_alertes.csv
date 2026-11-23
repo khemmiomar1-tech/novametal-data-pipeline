@@ -1,0 +1,6 @@
+ref_produit,nom_produit,quantite,valeur_stock_dh,seuil_min,statut
+PEIN,Peinture époxy grise 5L,0,0.0,10,RUPTURE - réapprovisionner
+RACK,Rack de stockage métallique R-200,0,0.0,0,Écoulé (commande livrée)
+TOLE,Tôle acier galvanisé 2 mm,10,1800.0,10,LIMITE - surveiller
+TUBE,Tube acier carré 40x40,20,1900.0,10,OK
+VISS,Visserie et boulonnerie M8,10,450.0,10,LIMITE - surveiller
