@@ -1,0 +1,6 @@
+ref_produit,nom_produit,type,prix_achat_dh,prix_vente_dh
+TOLE,Tôle acier galvanisé 2 mm,matière première,180,
+TUBE,Tube acier carré 40x40,matière première,95,
+VISS,Visserie et boulonnerie M8,matière première,45,
+PEIN,Peinture époxy grise 5L,matière première,320,
+RACK,Rack de stockage métallique R-200,produit fini,,2450

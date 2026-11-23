@@ -1,0 +1,11 @@
+horodatage,document,type_mouvement,ref_produit,quantite
+2026-11-17 21:25,WH/IN/00001,réception,TOLE,50
+2026-11-17 21:25,WH/IN/00001,réception,TUBE,80
+2026-11-17 21:25,WH/IN/00001,réception,VISS,30
+2026-11-17 21:25,WH/IN/00001,réception,PEIN,10
+2026-11-17 21:28,WH/MO/00001,consommation,TOLE,-40
+2026-11-17 21:28,WH/MO/00001,consommation,TUBE,-60
+2026-11-17 21:28,WH/MO/00001,consommation,VISS,-20
+2026-11-17 21:28,WH/MO/00001,consommation,PEIN,-10
+2026-11-17 21:28,WH/MO/00001,production,RACK,10
+2026-11-17 21:29,WH/OUT/00001,livraison,RACK,-10

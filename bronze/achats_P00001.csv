@@ -1,0 +1,5 @@
+document,fournisseur,ref_produit,quantite,prix_unitaire_dh,montant_dh
+P00001,SIDERMAG Fournitures Industrielles,TOLE,50,180,9000
+P00001,SIDERMAG Fournitures Industrielles,TUBE,80,95,7600
+P00001,SIDERMAG Fournitures Industrielles,VISS,30,45,1350
+P00001,SIDERMAG Fournitures Industrielles,PEIN,10,320,3200
